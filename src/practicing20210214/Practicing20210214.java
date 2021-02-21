@@ -202,17 +202,21 @@ public class Practicing20210214 {
         //you must multiply the digits in num until you reach a single digit.
         int result = 1;
         int mPersistence = 0;
-        do {
-            result = 1;
-            String nString = n + "";
-            for (int i = 0; i < nString.length(); i++) {
-                //System.out.print(nString.charAt(i)+", ");
-                result *= Integer.parseInt(nString.charAt(i) + "");
-            }
-            n = result;
-            //System.out.println(result);
-            mPersistence++;
-        } while (result > 9);
+        if (n < 10 && n > 0) {
+            mPersistence = 0;
+        } else {
+            do {
+                result = 1;
+                String nString = n + "";
+                for (int i = 0; i < nString.length(); i++) {
+                    //System.out.print(nString.charAt(i)+", ");
+                    result *= Integer.parseInt(nString.charAt(i) + "");
+                }
+                n = result;
+                //System.out.println(result);
+                mPersistence++;
+            } while (result > 9);
+        }
         return mPersistence;
     }
     
@@ -338,7 +342,7 @@ public class Practicing20210214 {
         System.out.println(findIt(array6));
         
         System.out.println("Persistence próba:");
-        System.out.println(persistence(999));
+        System.out.println(persistence(7));
         
         
         
