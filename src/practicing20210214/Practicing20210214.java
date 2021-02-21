@@ -195,14 +195,25 @@ public class Practicing20210214 {
   }
     
     
-    public static int persistence(long n){
+    public static int persistence(long n) {
         //https://www.codewars.com/kata/55bf01e5a717a0d57e0000ec/train/java
         //Write a function, persistence, that takes in a positive parameter num 
         //and returns its multiplicative persistence, which is the number of times
         //you must multiply the digits in num until you reach a single digit.
-        
-        
-        return 0;
+        int result = 1;
+        int mPersistence = 0;
+        do {
+            result = 1;
+            String nString = n + "";
+            for (int i = 0; i < nString.length(); i++) {
+                //System.out.print(nString.charAt(i)+", ");
+                result *= Integer.parseInt(nString.charAt(i) + "");
+            }
+            n = result;
+            //System.out.println(result);
+            mPersistence++;
+        } while (result > 9);
+        return mPersistence;
     }
     
     
@@ -326,7 +337,8 @@ public class Practicing20210214 {
         int[] array6 = new int[]{1,1,2,-2,5,2,4,4,-1,-2,5};
         System.out.println(findIt(array6));
         
-        
+        System.out.println("Persistence próba:");
+        System.out.println(persistence(999));
         
         
         
