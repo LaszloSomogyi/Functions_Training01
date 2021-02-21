@@ -220,6 +220,25 @@ public class Practicing20210214 {
         return mPersistence;
     }
     
+    public static int Persistence2(long n) {
+        int result = 1;
+        int mPersistence = 0;
+        if (n < 10 && n > 0) {
+            mPersistence = 0;
+        } else {
+            do {
+                result = 1;
+                while (n > 0) {
+                    result *= n % 10;
+                    n = n / 10;
+                }
+                n = result;
+                mPersistence++;
+            } while (result > 9);
+        }
+        return mPersistence;
+    }
+    
     
     public static int recursiveFibonacci(int n){
         //megírni!
@@ -344,7 +363,8 @@ public class Practicing20210214 {
         System.out.println("Persistence próba:");
         System.out.println(persistence(7));
         
-        
+        System.out.println("Persistence2 próba:");
+        System.out.println(Persistence2(999));
         
         
         
