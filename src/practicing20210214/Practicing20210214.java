@@ -284,7 +284,21 @@ public class Practicing20210214 {
         return missingNo;
     }
     
-
+        public static int findMissingNumber2(int[] array){
+        int missingNo = 0;
+        int maxNum = array[array.length-1];
+        int total = 0;
+        int arraySum = 0;
+        total = (maxNum * (maxNum+1))/2;
+        System.out.println("ennyi az összes szám összege: "+total);
+        
+        for(int element : array){
+            arraySum += element;
+        }
+        System.out.println("Ennyi a tömb elemeinek összege: "+arraySum);
+        missingNo = total - arraySum;
+        return missingNo;
+    }
     
     public static void leftRotator(int[] array, int d){
         //not yet ready!!!
@@ -390,6 +404,8 @@ public class Practicing20210214 {
         int missing = findMissingNumber(array7);
         System.out.println("The missing number is: "+missing);   
         
+        int missing2 = findMissingNumber2(array7);
+        System.out.println("The missing number acc. to the second function: "+missing2);
         
         
         
