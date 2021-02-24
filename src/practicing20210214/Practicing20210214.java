@@ -268,20 +268,23 @@ public class Practicing20210214 {
     
     public static int findMissingNumber(int[] array){
         int missingNo = 0;
-        int sum = 0;
+        int total = 0;
+        int maxNum = array[array.length-1];
         int arraySum = 0;
         
-        for(int i = 0; i<=array[array.length-1]; i++){
-            sum += i;
+        for(int i = 0; i<=maxNum; i++){
+            total += i;
         }
         
         for (int i : array) {
             arraySum += i;
         }
         
-        missingNo = sum - arraySum;
+        missingNo = total - arraySum;
         return missingNo;
     }
+    
+
     
     public static void leftRotator(int[] array, int d){
         //not yet ready!!!
@@ -383,9 +386,10 @@ public class Practicing20210214 {
         System.out.println("Persistence2 próba:");
         System.out.println(Persistence2(999));
         
-        int[] array7 = {1,2,3,4,5,6,8,9,10,11,12,7,14};
+        int[] array7 = {1,2,3,4,5,6,8};
         int missing = findMissingNumber(array7);
-        System.out.println("The missing number is: "+missing);
+        System.out.println("The missing number is: "+missing);   
+        
         
         
         
