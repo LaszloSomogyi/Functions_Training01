@@ -340,6 +340,17 @@ public class Practicing20210214 {
         return output;
     }
     
+    public static int digitalRoot(int n){
+        while(n>9){
+           String nString = n+"";
+           n = 0;
+            for (int i = 0; i < nString.length(); i++) {
+                n += Integer.parseInt(nString.charAt(i)+"");         
+            }
+        }
+        return n;
+    }
+    
 
     
     public static void leftRotator(int[] array, int d){
@@ -455,6 +466,9 @@ public class Practicing20210214 {
         String test = camelCase("BelaNeverSleeps");
         System.out.println(test);
         
+        System.out.println(digitalRoot(493193));
+        
+       
 
         }
     }
