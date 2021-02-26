@@ -5,6 +5,7 @@
  */
 package practicing20210214;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -299,6 +300,33 @@ public class Practicing20210214 {
         missingNo = total - arraySum;
         return missingNo;
     }
+        
+    public static void plusMinus(int[] array){
+        double nullCounter = 0;
+        double nullRatio = 0;
+        double posCounter = 0;
+        double posRatio = 0;
+        double negCounter = 0;
+        double negRatio = 0;
+        
+        DecimalFormat df = new DecimalFormat("0.000000");
+        
+        for(int i = 0; i<array.length; i++){
+            if(array[i]==0){
+                nullCounter++;
+            } else if(array[i]<0){
+                negCounter++;
+            } else {
+                posCounter++;
+            }
+        }
+        posRatio = posCounter/array.length;
+        System.out.println(df.format(posRatio));
+        negRatio = negCounter/array.length;
+        System.out.println(df.format(negRatio));
+        nullRatio = nullCounter/array.length;
+        System.out.println(df.format(nullRatio));
+    }
     
     public static void leftRotator(int[] array, int d){
         //not yet ready!!!
@@ -311,8 +339,7 @@ public class Practicing20210214 {
         }
     }
     
-    //array[1]=array[array.length-i+1]
-    //array[0]=array[array.length-i+]
+
     
     public static void main(String[] args) {
         
@@ -407,7 +434,7 @@ public class Practicing20210214 {
         int missing2 = findMissingNumber2(array7);
         System.out.println("The missing number acc. to the second function: "+missing2);
         
-        
-        
+        int[] array8 = {1, 1, 0, -1, -1};
+        plusMinus(array8);
     }
 }
