@@ -7,6 +7,7 @@ package practicing20210214;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -328,6 +329,17 @@ public class Practicing20210214 {
         System.out.println(df.format(nullRatio));
     }
     
+    public static String camelCase(String input){
+        for(int i = 0; i<input.length(); i++){
+            if(Character.isUpperCase(input.charAt(i))){
+                input = input.substring(0, i)+" "+input.substring(i+1);
+            }
+        }
+        return input;
+    }
+    
+
+    
     public static void leftRotator(int[] array, int d){
         //not yet ready!!!
         for(int i=array.length-1; i>=0; i--){
@@ -436,5 +448,12 @@ public class Practicing20210214 {
         
         int[] array8 = {1, 1, 0, -1, -1};
         plusMinus(array8);
+        
+        System.out.println("BelaNeverSleeps");
+        String test = camelCase("BelaNeverSleeps");
+        System.out.println(test);
+        
+
+        }
     }
-}
+
