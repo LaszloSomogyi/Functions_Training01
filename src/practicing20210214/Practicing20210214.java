@@ -379,6 +379,32 @@ public class Practicing20210214 {
         return squares;
     }
     
+    public static int[] deadFishparser(String data){
+        int arrayLength = 0;
+        int arrayIndex = 0;
+        int value = 0;
+        for(int i = 0; i < data.length(); i++){
+            if(data.charAt(i)=='o'){
+                arrayLength++;
+            }
+        }
+        int[] array = new int[arrayLength];
+        for(int i = 0; i < data.length(); i++){
+            switch(data.charAt(i)){
+                case 'i': value++;
+                break;
+                case 'd': value--;
+                break;
+                case 's': value *= value;
+                break;
+                case 'o': array[arrayIndex] = value;
+                arrayIndex++;
+                break;
+            }
+        }
+        return array;
+    }
+    
     
     public static void leftRotator(int[] array, int d){
         //not yet ready!!!
@@ -500,6 +526,15 @@ public class Practicing20210214 {
         for (Integer integer : squareList) {
             System.out.print(integer+", ");
         }
+        
+        System.out.println();
+        System.out.println("Deadfish parser:");
+        int[] array9 = deadFishparser("iiisdosodddddiso");
+        for (int i : array9) {
+            System.out.print(i+", ");
         }
+        
+        }
+
     }
 
