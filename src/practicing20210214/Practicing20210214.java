@@ -368,6 +368,18 @@ public class Practicing20210214 {
         return root;
     }
     
+    public static List<Integer> SquaresInRect(int lng, int wdth){
+        List<Integer> squares = new ArrayList<>();
+        while(wdth>0){
+            squares.add(wdth);
+            int wdth2 = lng-wdth;
+            lng = wdth;
+            wdth = wdth2;
+        }
+        return squares;
+    }
+    
+    
     public static void leftRotator(int[] array, int d){
         //not yet ready!!!
         for(int i=array.length-1; i>=0; i--){
@@ -484,7 +496,10 @@ public class Practicing20210214 {
         System.out.println(digitalRoot(16));
         System.out.println(digitalRoot2(942));
        
-
+        List<Integer> squareList = SquaresInRect(5, 3);
+        for (Integer integer : squareList) {
+            System.out.print(integer+", ");
+        }
         }
     }
 
