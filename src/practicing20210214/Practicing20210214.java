@@ -351,7 +351,22 @@ public class Practicing20210214 {
         return n;
     }
     
-
+    public static int digitalRoot2(int n) {
+        int root = 0;
+        if (n < 10) {
+            return n;
+        } else {
+            while (n > 9) {
+                root = 0;
+                while (n > 0) {
+                    root += n % 10;
+                    n /= 10;
+                }
+                n = root;
+            }
+        }
+        return root;
+    }
     
     public static void leftRotator(int[] array, int d){
         //not yet ready!!!
@@ -466,8 +481,8 @@ public class Practicing20210214 {
         String test = camelCase("BelaNeverSleeps");
         System.out.println(test);
         
-        System.out.println(digitalRoot(493193));
-        
+        System.out.println(digitalRoot(16));
+        System.out.println(digitalRoot2(942));
        
 
         }
