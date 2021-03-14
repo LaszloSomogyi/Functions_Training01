@@ -451,11 +451,41 @@ public class Practicing20210214 {
         }
        return s;
     }
+    
+    public static boolean tenMinuteWalk(char[] walk){
+        //https://www.codewars.com/kata/54da539698b8a2ad76000228
+        if (walk.length!=10) {
+            return false;
+        }
+        int nCounter = 0;
+        int sCounter = 0;
+        int wCounter = 0;
+        int eCounter = 0;
+        for (int i = 0; i < walk.length; i++) {
+            switch(walk[i]){
+                case 'n': nCounter++;
+                break;
+                case 's': sCounter++;
+                break;
+                case 'w': wCounter++;
+                break;
+                case 'e': eCounter++;
+                break;
+            }
+        }
+        System.out.println("nCounter "+nCounter);
+        System.out.println("sCounter "+sCounter);
+        if(nCounter==sCounter && wCounter==eCounter) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public static void main(String[] args) {
 
-        String k = CamelCaseConverter("wewe_wewe_wewe");
-        System.out.println(k);
+        char[] array = {'n','s','n','s','n','s','n','s','n','s'};
+        System.out.println(tenMinuteWalk(array));
 
         
     }
