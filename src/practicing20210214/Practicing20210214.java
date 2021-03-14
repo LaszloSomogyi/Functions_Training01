@@ -419,6 +419,29 @@ public class Practicing20210214 {
             }
         }
     }
+    
+    public static boolean LuhnAlgorithm(String n) {
+        //https://www.codewars.com/kata/5418a1dd6d8216e18a0012b2/train/java
+        int[] array = new int[n.length()];
+        int sum = 0;
+        for (int i = 0; i < n.length(); i++) {
+            array[i] = Integer.parseInt(n.charAt(i) + "");
+        }
+        for (int i = 0; i < array.length; i++) {
+            if (i % 2 != 0) {
+                array[array.length - 1 - i] *= 2;
+                if (array[array.length - 1 - i] > 9) {
+                    array[array.length - 1 - i] -= 9;
+                }
+            }
+            sum += array[array.length - 1 - i];
+        }
+        if (sum % 10 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public static void main(String[] args) {
 
@@ -426,6 +449,8 @@ public class Practicing20210214 {
         arrayFiller(array);
         arrayPrinter(array);
         arrayPrinter(ranArrayCreator(10));
+        int[] probaArray = ranArrayCreator(10);
+        LuhnAlgorithm("5555");
       
     }
 
