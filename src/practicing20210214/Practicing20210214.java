@@ -442,16 +442,22 @@ public class Practicing20210214 {
             return false;
         }
     }
+    
+    public static String CamelCaseConverter(String s){
+       String[] words = s.split("[-_]");
+       s = words[0];
+        for (int i = 0; i < words.length; i++) {
+            s+=words[i].substring(0, 1).toUpperCase()+words[i].substring(1).toLowerCase();
+        }
+       return s;
+    }
 
     public static void main(String[] args) {
 
-        int[] array = new int[15];
-        arrayFiller(array);
-        arrayPrinter(array);
-        arrayPrinter(ranArrayCreator(10));
-        int[] probaArray = ranArrayCreator(10);
-        LuhnAlgorithm("5555");
-      
+        String k = CamelCaseConverter("wewe_wewe_wewe");
+        System.out.println(k);
+
+        
     }
 
 }
