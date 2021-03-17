@@ -481,11 +481,58 @@ public class Practicing20210214 {
             return false;
         }
     }
+    
+    public static int[] DataReverse(int[] data){
+        //https://www.codewars.com/kata/569d488d61b812a0f7000015
+        int min = data.length-8;
+        int max = data.length-1;
+        List<Integer> dataList = new ArrayList<>();
+        while(min>=0){
+            for(int i = min; i <= max; i++){
+                dataList.add(data[i]);
+            }
+            max = min-1;
+            min = min-8;
+        }
+        Integer[] array = new Integer[dataList.size()];
+        array = dataList.toArray(array);
+        for (int i = 0; i < array.length; i++) {
+            data[i] = array[i];
+        }
+        return data;
+    }
+    
+    public static int[] DataReverse2(int[] data){
+        //https://www.codewars.com/kata/569d488d61b812a0f7000015
+        int min = data.length-8;
+        int max = data.length-1;
+        int counter = 0;
+        int[] data2 = new int[data.length];
+        while(min>=0){
+            for(int i = min; i <= max; i++){
+                data2[counter] = data[i];
+                counter++;
+            }
+            max = min-1;
+            min = min-8;
+        }
+        return data2;
+    }
+    
 
     public static void main(String[] args) {
 
-        char[] array = {'n','s','n','s','n','s','n','s','n','s'};
-        System.out.println(tenMinuteWalk(array));
+        int[] data1= {1,1,1,1,1,1,1,1, 0,0,0,0,0,0,0,0, 0,0,0,0,1,1,1,1, 1,0,1,0,1,0,1,0, 3,3,3,3,3,3,3,3};
+        int[] data2 = DataReverse(data1);
+        for (int i : data2) {
+            System.out.print(i+", ");
+        }
+        System.out.println("");
+        int[] data3= {1,1,1,1,1,1,1,1, 0,0,0,0,0,0,0,0, 0,0,0,0,1,1,1,1, 1,0,1,0,1,0,1,0, 3,3,3,3,3,3,3,3};
+        int[] data4 = DataReverse2(data3);
+        for (int i : data4) {
+            System.out.print(i+", ");
+        }
 
         
     }
