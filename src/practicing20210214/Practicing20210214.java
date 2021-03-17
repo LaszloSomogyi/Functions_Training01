@@ -538,12 +538,26 @@ public class Practicing20210214 {
         System.out.println(minSum+" "+maxSum);
     }
     
+    public static String timeConversion(String s){
+        int hours = Integer.parseInt(s.substring(0, 2));
+        if (s.startsWith("12") && s.endsWith("AM")){
+            s = "00" + s.substring(2, s.length()-2);
+        } else if (s.startsWith("12") && s.endsWith("PM")){
+            s = "12" + s.substring(2, s.length()-2);
+        } else  if (s.endsWith("PM")) {
+            hours = hours + 12;
+            s = (hours+"")+s.substring(2, s.length()-2);
+        } else if (s.endsWith("AM")){
+            s = s.substring(0, s.length()-2);
+        }
+        return s;
+    }
+    
 
     public static void main(String[] args) {
-
-        miniMaxSum(new int[]{256741038, 623958417, 467905213, 714532089, 938071625});
         
-        
+        String time = timeConversion("12:05:45PM");
+        System.out.println(time);
 
         
     }
