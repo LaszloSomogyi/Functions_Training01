@@ -519,20 +519,31 @@ public class Practicing20210214 {
         return data2;
     }
     
+    public static void miniMaxSum(int[] array){
+        //https://www.hackerrank.com/challenges/mini-max-sum/problem
+        long min = array[0];
+        long max = array[0];
+        long total = 0;
+        for(int i = 0; i < array.length; i++){
+            if (min>array[i]) {
+                min = array[i];
+            }
+            if (max<array[i]) {
+                max = array[i];
+            }
+            total += array[i];
+        }
+        long minSum = total - max;
+        long maxSum = total - min;
+        System.out.println(minSum+" "+maxSum);
+    }
+    
 
     public static void main(String[] args) {
 
-        int[] data1= {1,1,1,1,1,1,1,1, 0,0,0,0,0,0,0,0, 0,0,0,0,1,1,1,1, 1,0,1,0,1,0,1,0, 3,3,3,3,3,3,3,3};
-        int[] data2 = DataReverse(data1);
-        for (int i : data2) {
-            System.out.print(i+", ");
-        }
-        System.out.println("");
-        int[] data3= {1,1,1,1,1,1,1,1, 0,0,0,0,0,0,0,0, 0,0,0,0,1,1,1,1, 1,0,1,0,1,0,1,0, 3,3,3,3,3,3,3,3};
-        int[] data4 = DataReverse2(data3);
-        for (int i : data4) {
-            System.out.print(i+", ");
-        }
+        miniMaxSum(new int[]{256741038, 623958417, 467905213, 714532089, 938071625});
+        
+        
 
         
     }
