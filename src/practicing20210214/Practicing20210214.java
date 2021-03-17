@@ -539,6 +539,7 @@ public class Practicing20210214 {
     }
     
     public static String timeConversion(String s){
+        //https://www.hackerrank.com/challenges/time-conversion/problem 
         int hours = Integer.parseInt(s.substring(0, 2));
         if (s.startsWith("12") && s.endsWith("AM")){
             s = "00" + s.substring(2, s.length()-2);
@@ -553,11 +554,40 @@ public class Practicing20210214 {
         return s;
     }
     
+    public static List<Integer> gradeRounder(List<Integer> grades){
+        //https://www.hackerrank.com/challenges/grading/problem
+        int grade = 0;
+        for (int i = 0; i < grades.size(); i++) {
+            if(grades.get(i)>=38 && grades.get(i)%5>2) {
+                grade = grades.get(i);
+                grades.set(i, grade + (5 - (grade % 5)));
+            } 
+        }
+        return grades;
+    }
+    
 
     public static void main(String[] args) {
         
-        String time = timeConversion("12:05:45PM");
-        System.out.println(time);
+        
+        
+        List<Integer> grades = new ArrayList<>();
+        grades.add(53);
+        grades.add(64);
+        grades.add(55);
+        grades.add(52);
+        grades.add(84);
+        grades.add(83);
+        grades.add(87);
+        grades.add(88);
+        grades.add(89);
+        grades.add(38);
+
+        gradeRounder(grades);
+        
+        for (Integer g : grades) {
+            System.out.print(g+", ");
+        }
 
         
     }
