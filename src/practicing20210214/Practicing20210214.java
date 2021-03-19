@@ -578,12 +578,27 @@ public class Practicing20210214 {
         return str;
     }
     
+    public static void countApplesAndOranges(int s, int t, int a, int b, int[] apples, int[] oranges) {
+    int appleCounter = 0;
+    int orangeCounter = 0;
+    for(int i = 0; i < apples.length; i++){
+        if(a+apples[i]>=s && a+apples[i]<=t){
+            appleCounter++;
+        }        
+    }
+    System.out.println(appleCounter);
+    for(int i = 0; i < oranges.length; i++){
+        if(b+oranges[i]<=t && b+oranges[i]>=s){
+            orangeCounter++;
+        }
+    }
+    System.out.println(orangeCounter);
+    }
+    
 
     public static void main(String[] args) {
         
-    String a = "Pig latin is cool!";
-        System.out.println(pigLatin(a));
-    
+
         
     
 
