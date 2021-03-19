@@ -566,28 +566,27 @@ public class Practicing20210214 {
         return grades;
     }
     
+    public static String pigLatin(String str){
+        String[] strArray = str.split(" ");
+        str = "";
+        for(int i = 0; i < strArray.length; i++){
+            char start = strArray[i].charAt(0);
+            strArray[i] = strArray[i].substring(1, strArray[i].length())+start+"ay";
+            str += strArray[i]+" ";
+        }
+        str = str.trim();
+        return str;
+    }
+    
 
     public static void main(String[] args) {
         
+    String a = "Pig latin is cool!";
+        System.out.println(pigLatin(a));
+    
         
-        
-        List<Integer> grades = new ArrayList<>();
-        grades.add(53);
-        grades.add(64);
-        grades.add(55);
-        grades.add(52);
-        grades.add(84);
-        grades.add(83);
-        grades.add(87);
-        grades.add(88);
-        grades.add(89);
-        grades.add(38);
+    
 
-        gradeRounder(grades);
-        
-        for (Integer g : grades) {
-            System.out.print(g+", ");
-        }
 
         
     }
