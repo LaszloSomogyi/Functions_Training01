@@ -6,10 +6,12 @@
 package practicing20210214;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -595,14 +597,24 @@ public class Practicing20210214 {
     System.out.println(orangeCounter);
     }
     
+    public static double calculateInstallment(double loan, double annualInterestRate, int periodInYears){
+        double installment;
+        final byte MONTHS_IN_YEAR = 12;
+        final byte PERCENT = 100;
+        double monthlyInterestRate = annualInterestRate/PERCENT/MONTHS_IN_YEAR;
+        int noOfPayments = periodInYears * MONTHS_IN_YEAR;
+        
+        installment =  
+                loan * 
+                (monthlyInterestRate * Math.pow(1+monthlyInterestRate, noOfPayments)/
+                (Math.pow(1+monthlyInterestRate, noOfPayments)-1));
+        return installment;
+    }
+    
 
     public static void main(String[] args) {
         
-
-        
-    
-
-
+        System.out.println(calculateInstallment(100_000, 6, 15));
         
     }
 
