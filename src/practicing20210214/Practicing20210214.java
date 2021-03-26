@@ -658,11 +658,70 @@ public class Practicing20210214 {
         return n;
     }
     
+    public static long nextBiggerNumber2(long n){
+        //https://www.codewars.com/kata/55983863da40caa2c900004e/train/java
+        char[] charArray = Long.toString(n).toCharArray();
+        //if the array lenght is 1, return -1
+        if (charArray.length==1) {
+            return -1;
+        }
+        //find the pivot digit
+        int change = 0;
+        int pivotPosition = 0;
+        for(int i = charArray.length-1; i >= 0; i--){
+            if (Integer.parseInt(charArray[i]+"") > Integer.parseInt(charArray[i-1]+"")) {
+                change++;
+                pivotPosition = i-1;
+                break;
+            }
+        }
+        //if the number cannot be reordered, return -1
+        if (change==0) {
+            return -1;
+        }
+        //in the right segment find the smallest digit that is bigger than the pivot
+        int biggestPosition = pivotPosition + 1;
+        int leastBigger = 0;
+        for (int i = pivotPosition + 1; i < charArray.length; i++) {
+            if (Integer.parseInt(charArray[i] + "") > Integer.parseInt(charArray[pivotPosition] + "")) {
+                leastBigger = i;
+            }
+        }
+        //swap these two
+        char tmp = charArray[pivotPosition];
+        charArray[pivotPosition] = charArray[leastBigger];
+        charArray[leastBigger] = tmp;
+        //sort the right side of the number
+        char[] rightSideArray = new char[charArray.length-pivotPosition-1];
+        for (int i = 0; i < rightSideArray.length; i++) {
+            rightSideArray[i] = charArray[pivotPosition+1+i];
+        }
+        for (int i = 0; i < rightSideArray.length; i++) {
+            for (int j = 0; j < rightSideArray.length-i-1; j++) {
+                tmp = rightSideArray[j];
+                rightSideArray[j] = rightSideArray[j+1];
+                rightSideArray[j+1] = tmp;
+            }
+        }
+        for (int i = 0; i < rightSideArray.length; i++) {
+            charArray[pivotPosition+1+i] = rightSideArray[i];
+        }
+        //turn the char array back into a long number
+        n = 0;
+        int digit = 0;
+        for (int i = 0; i <= charArray.length-1; i++) {
+            digit = Integer.parseInt(charArray[i]+"");
+            n = n * 10;
+            n += digit;
+        }
+        return n;
+    }
+    
 
     public static void main(String[] args) {
         
-        System.out.println(21581958621L);
-        System.out.println(nextBiggerNumber(21581958621L));
+        System.out.println(1234567890L);
+        System.out.println(nextBiggerNumber2(1234567890L));
         
 
         
