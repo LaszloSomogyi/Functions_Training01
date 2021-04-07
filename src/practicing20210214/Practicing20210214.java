@@ -717,13 +717,32 @@ public class Practicing20210214 {
         return n;
     }
     
+    public static double centeredAverage(int[] array){
+        double average = 0;
+        int max = array[0];
+        int min = array[0];
+        int sum = 0;
+        for(int i = 0; i < array.length; i++){
+            if(array[i]>max){
+                max = array[i];
+            }
+            if(array[i] < min){
+                min = array[i];
+            }
+            sum += array[i];
+        }
+        average = (sum-max-min)/(double)(array.length-2);
+        return average;
+    }
+    
 
+   
     public static void main(String[] args) {
         
-        System.out.println(1234567890L);
-        System.out.println(nextBiggerNumber2(1234567890L));
-        
+    int[] array = {2, 5, 7, 8, 21, 7, 2, 11};
+        System.out.println(centeredAverage(array));
 
+        System.out.println(Arrays.toString(array));
         
         
     }
