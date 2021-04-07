@@ -735,15 +735,23 @@ public class Practicing20210214 {
         return average;
     }
     
+    public static int oneMissingNumber(int[] array){
+        Arrays.sort(array);
+        int missing = 0;
+        for(int i = 0; i < array.length-1; i++){
+            if (array[i]+2==array[i+1]) {
+                missing = array[i]+1;
+            }
+        }
+        return missing;
+    }
+    
 
    
     public static void main(String[] args) {
         
-    int[] array = {2, 5, 7, 8, 21, 7, 2, 11};
-        System.out.println(centeredAverage(array));
-
-        System.out.println(Arrays.toString(array));
-        
+    int[] array = {2, 5, 7, 4, 12, 9, 8, 10, 11, 3};
+        System.out.println(oneMissingNumber(array));        
         
     }
 
