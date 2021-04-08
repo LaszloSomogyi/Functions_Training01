@@ -9,9 +9,11 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  *
@@ -746,12 +748,24 @@ public class Practicing20210214 {
         return missing;
     }
     
+    public static int oneDuplicate(int[] array){
+        Set set = new HashSet();
+        int duplicate = 0;
+        for(int i = 0; i < array.length; i++){
+            if (!set.add(array[i])) {
+                duplicate = array[i];
+                break;
+            }
+        }
+        return duplicate;
+    }
+    
 
    
     public static void main(String[] args) {
         
-    int[] array = {2, 5, 7, 4, 12, 9, 8, 10, 11, 3};
-        System.out.println(oneMissingNumber(array));        
+        int[] array = {2, 4, 6, 11, 3, 77, 88, 55, 54, 23, 5, 9, 11, 12};
+        System.out.println(oneDuplicate(array));
         
     }
 
