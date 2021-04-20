@@ -9,11 +9,14 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.Stack;
 
 /**
  *
@@ -32,11 +35,11 @@ public class Practicing20210214 {
             array[i] = i + 1;
         }
     }
-    
-    public static int[] ranArrayCreator(int length){
+
+    public static int[] ranArrayCreator(int length) {
         int[] array = new int[length];
         Random ran = new Random();
-        for(int i = 0; i<array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             array[i] = ran.nextInt(200);
         }
         return array;
@@ -423,7 +426,7 @@ public class Practicing20210214 {
             }
         }
     }
-    
+
     public static boolean LuhnAlgorithm(String n) {
         //https://www.codewars.com/kata/5418a1dd6d8216e18a0012b2/train/java
         int[] array = new int[n.length()];
@@ -446,19 +449,19 @@ public class Practicing20210214 {
             return false;
         }
     }
-    
-    public static String CamelCaseConverter(String s){
-       String[] words = s.split("[-_]");
-       s = words[0];
+
+    public static String CamelCaseConverter(String s) {
+        String[] words = s.split("[-_]");
+        s = words[0];
         for (int i = 0; i < words.length; i++) {
-            s+=words[i].substring(0, 1).toUpperCase()+words[i].substring(1).toLowerCase();
+            s += words[i].substring(0, 1).toUpperCase() + words[i].substring(1).toLowerCase();
         }
-       return s;
+        return s;
     }
-    
-    public static boolean tenMinuteWalk(char[] walk){
+
+    public static boolean tenMinuteWalk(char[] walk) {
         //https://www.codewars.com/kata/54da539698b8a2ad76000228
-        if (walk.length!=10) {
+        if (walk.length != 10) {
             return false;
         }
         int nCounter = 0;
@@ -466,37 +469,41 @@ public class Practicing20210214 {
         int wCounter = 0;
         int eCounter = 0;
         for (int i = 0; i < walk.length; i++) {
-            switch(walk[i]){
-                case 'n': nCounter++;
-                break;
-                case 's': sCounter++;
-                break;
-                case 'w': wCounter++;
-                break;
-                case 'e': eCounter++;
-                break;
+            switch (walk[i]) {
+                case 'n':
+                    nCounter++;
+                    break;
+                case 's':
+                    sCounter++;
+                    break;
+                case 'w':
+                    wCounter++;
+                    break;
+                case 'e':
+                    eCounter++;
+                    break;
             }
         }
-        System.out.println("nCounter "+nCounter);
-        System.out.println("sCounter "+sCounter);
-        if(nCounter==sCounter && wCounter==eCounter) {
+        System.out.println("nCounter " + nCounter);
+        System.out.println("sCounter " + sCounter);
+        if (nCounter == sCounter && wCounter == eCounter) {
             return true;
         } else {
             return false;
         }
     }
-    
-    public static int[] DataReverse(int[] data){
+
+    public static int[] DataReverse(int[] data) {
         //https://www.codewars.com/kata/569d488d61b812a0f7000015
-        int min = data.length-8;
-        int max = data.length-1;
+        int min = data.length - 8;
+        int max = data.length - 1;
         List<Integer> dataList = new ArrayList<>();
-        while(min>=0){
-            for(int i = min; i <= max; i++){
+        while (min >= 0) {
+            for (int i = min; i <= max; i++) {
                 dataList.add(data[i]);
             }
-            max = min-1;
-            min = min-8;
+            max = min - 1;
+            min = min - 8;
         }
         Integer[] array = new Integer[dataList.size()];
         array = dataList.toArray(array);
@@ -505,134 +512,133 @@ public class Practicing20210214 {
         }
         return data;
     }
-    
-    public static int[] DataReverse2(int[] data){
+
+    public static int[] DataReverse2(int[] data) {
         //https://www.codewars.com/kata/569d488d61b812a0f7000015
-        int min = data.length-8;
-        int max = data.length-1;
+        int min = data.length - 8;
+        int max = data.length - 1;
         int counter = 0;
         int[] data2 = new int[data.length];
-        while(min>=0){
-            for(int i = min; i <= max; i++){
+        while (min >= 0) {
+            for (int i = min; i <= max; i++) {
                 data2[counter] = data[i];
                 counter++;
             }
-            max = min-1;
-            min = min-8;
+            max = min - 1;
+            min = min - 8;
         }
         return data2;
     }
-    
-    public static void miniMaxSum(int[] array){
+
+    public static void miniMaxSum(int[] array) {
         //https://www.hackerrank.com/challenges/mini-max-sum/problem
         long min = array[0];
         long max = array[0];
         long total = 0;
-        for(int i = 0; i < array.length; i++){
-            if (min>array[i]) {
+        for (int i = 0; i < array.length; i++) {
+            if (min > array[i]) {
                 min = array[i];
             }
-            if (max<array[i]) {
+            if (max < array[i]) {
                 max = array[i];
             }
             total += array[i];
         }
         long minSum = total - max;
         long maxSum = total - min;
-        System.out.println(minSum+" "+maxSum);
+        System.out.println(minSum + " " + maxSum);
     }
-    
-    public static String timeConversion(String s){
+
+    public static String timeConversion(String s) {
         //https://www.hackerrank.com/challenges/time-conversion/problem 
         int hours = Integer.parseInt(s.substring(0, 2));
-        if (s.startsWith("12") && s.endsWith("AM")){
-            s = "00" + s.substring(2, s.length()-2);
-        } else if (s.startsWith("12") && s.endsWith("PM")){
-            s = "12" + s.substring(2, s.length()-2);
-        } else  if (s.endsWith("PM")) {
+        if (s.startsWith("12") && s.endsWith("AM")) {
+            s = "00" + s.substring(2, s.length() - 2);
+        } else if (s.startsWith("12") && s.endsWith("PM")) {
+            s = "12" + s.substring(2, s.length() - 2);
+        } else if (s.endsWith("PM")) {
             hours = hours + 12;
-            s = (hours+"")+s.substring(2, s.length()-2);
-        } else if (s.endsWith("AM")){
-            s = s.substring(0, s.length()-2);
+            s = (hours + "") + s.substring(2, s.length() - 2);
+        } else if (s.endsWith("AM")) {
+            s = s.substring(0, s.length() - 2);
         }
         return s;
     }
-    
-    public static List<Integer> gradeRounder(List<Integer> grades){
+
+    public static List<Integer> gradeRounder(List<Integer> grades) {
         //https://www.hackerrank.com/challenges/grading/problem
         int grade = 0;
         for (int i = 0; i < grades.size(); i++) {
-            if(grades.get(i)>=38 && grades.get(i)%5>2) {
+            if (grades.get(i) >= 38 && grades.get(i) % 5 > 2) {
                 grade = grades.get(i);
                 grades.set(i, grade + (5 - (grade % 5)));
-            } 
+            }
         }
         return grades;
     }
-    
-    public static String pigLatin(String str){
+
+    public static String pigLatin(String str) {
         String[] strArray = str.split(" ");
         str = "";
-        for(int i = 0; i < strArray.length; i++){
+        for (int i = 0; i < strArray.length; i++) {
             char start = strArray[i].charAt(0);
-            strArray[i] = strArray[i].substring(1, strArray[i].length())+start+"ay";
-            str += strArray[i]+" ";
+            strArray[i] = strArray[i].substring(1, strArray[i].length()) + start + "ay";
+            str += strArray[i] + " ";
         }
         str = str.trim();
         return str;
     }
-    
+
     public static void countApplesAndOranges(int s, int t, int a, int b, int[] apples, int[] oranges) {
-    int appleCounter = 0;
-    int orangeCounter = 0;
-    for(int i = 0; i < apples.length; i++){
-        if(a+apples[i]>=s && a+apples[i]<=t){
-            appleCounter++;
-        }        
-    }
-    System.out.println(appleCounter);
-    for(int i = 0; i < oranges.length; i++){
-        if(b+oranges[i]<=t && b+oranges[i]>=s){
-            orangeCounter++;
+        int appleCounter = 0;
+        int orangeCounter = 0;
+        for (int i = 0; i < apples.length; i++) {
+            if (a + apples[i] >= s && a + apples[i] <= t) {
+                appleCounter++;
+            }
         }
+        System.out.println(appleCounter);
+        for (int i = 0; i < oranges.length; i++) {
+            if (b + oranges[i] <= t && b + oranges[i] >= s) {
+                orangeCounter++;
+            }
+        }
+        System.out.println(orangeCounter);
     }
-    System.out.println(orangeCounter);
-    }
-    
-    public static double calculateInstallment(double loan, double annualInterestRate, int periodInYears){
+
+    public static double calculateInstallment(double loan, double annualInterestRate, int periodInYears) {
         double installment;
         final byte MONTHS_IN_YEAR = 12;
         final byte PERCENT = 100;
-        double monthlyInterestRate = annualInterestRate/PERCENT/MONTHS_IN_YEAR;
+        double monthlyInterestRate = annualInterestRate / PERCENT / MONTHS_IN_YEAR;
         int noOfPayments = periodInYears * MONTHS_IN_YEAR;
-        
-        installment =  
-                loan * 
-                (monthlyInterestRate * Math.pow(1+monthlyInterestRate, noOfPayments)/
-                (Math.pow(1+monthlyInterestRate, noOfPayments)-1));
+
+        installment
+                = loan
+                * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, noOfPayments)
+                / (Math.pow(1 + monthlyInterestRate, noOfPayments) - 1));
         return installment;
     }
-    
-    
-    public static long nextBiggerNumber(long n){
+
+    public static long nextBiggerNumber(long n) {
         //https://www.codewars.com/kata/55983863da40caa2c900004e/train/java
         char[] charArray = Long.toString(n).toCharArray();
         //if the array lenght is 1, return -1
-        if (charArray.length==1) {
+        if (charArray.length == 1) {
             return -1;
         }
         //find the pivot digit
         int change = 0;
         int pivotPosition = 0;
-        for(int i = charArray.length-1; i >= 0; i--){
-            if (Integer.parseInt(charArray[i]+"") > Integer.parseInt(charArray[i-1]+"")) {
+        for (int i = charArray.length - 1; i >= 0; i--) {
+            if (Integer.parseInt(charArray[i] + "") > Integer.parseInt(charArray[i - 1] + "")) {
                 change++;
-                pivotPosition = i-1;
+                pivotPosition = i - 1;
                 break;
             }
         }
         //if the number cannot be reordered, return -1
-        if (change==0) {
+        if (change == 0) {
             return -1;
         }
         //in the right segment find the smallest digit that is bigger than the pivot
@@ -648,37 +654,37 @@ public class Practicing20210214 {
         charArray[pivotPosition] = charArray[leastBigger];
         charArray[leastBigger] = tmp;
         //sort the right side of the number
-        Arrays.sort(charArray, pivotPosition+1, charArray.length);
+        Arrays.sort(charArray, pivotPosition + 1, charArray.length);
         //turn the char array back into a long number
         n = 0;
         int digit = 0;
-        for (int i = 0; i <= charArray.length-1; i++) {
-            digit = Integer.parseInt(charArray[i]+"");
+        for (int i = 0; i <= charArray.length - 1; i++) {
+            digit = Integer.parseInt(charArray[i] + "");
             n = n * 10;
             n += digit;
         }
         return n;
     }
-    
-    public static long nextBiggerNumber2(long n){
+
+    public static long nextBiggerNumber2(long n) {
         //https://www.codewars.com/kata/55983863da40caa2c900004e/train/java
         char[] charArray = Long.toString(n).toCharArray();
         //if the array lenght is 1, return -1
-        if (charArray.length==1) {
+        if (charArray.length == 1) {
             return -1;
         }
         //find the pivot digit
         int change = 0;
         int pivotPosition = 0;
-        for(int i = charArray.length-1; i >= 0; i--){
-            if (Integer.parseInt(charArray[i]+"") > Integer.parseInt(charArray[i-1]+"")) {
+        for (int i = charArray.length - 1; i >= 0; i--) {
+            if (Integer.parseInt(charArray[i] + "") > Integer.parseInt(charArray[i - 1] + "")) {
                 change++;
-                pivotPosition = i-1;
+                pivotPosition = i - 1;
                 break;
             }
         }
         //if the number cannot be reordered, return -1
-        if (change==0) {
+        if (change == 0) {
             return -1;
         }
         //in the right segment find the smallest digit that is bigger than the pivot
@@ -694,64 +700,64 @@ public class Practicing20210214 {
         charArray[pivotPosition] = charArray[leastBigger];
         charArray[leastBigger] = tmp;
         //sort the right side of the number
-        char[] rightSideArray = new char[charArray.length-pivotPosition-1];
+        char[] rightSideArray = new char[charArray.length - pivotPosition - 1];
         for (int i = 0; i < rightSideArray.length; i++) {
-            rightSideArray[i] = charArray[pivotPosition+1+i];
+            rightSideArray[i] = charArray[pivotPosition + 1 + i];
         }
         for (int i = 0; i < rightSideArray.length; i++) {
-            for (int j = 0; j < rightSideArray.length-i-1; j++) {
+            for (int j = 0; j < rightSideArray.length - i - 1; j++) {
                 tmp = rightSideArray[j];
-                rightSideArray[j] = rightSideArray[j+1];
-                rightSideArray[j+1] = tmp;
+                rightSideArray[j] = rightSideArray[j + 1];
+                rightSideArray[j + 1] = tmp;
             }
         }
         for (int i = 0; i < rightSideArray.length; i++) {
-            charArray[pivotPosition+1+i] = rightSideArray[i];
+            charArray[pivotPosition + 1 + i] = rightSideArray[i];
         }
         //turn the char array back into a long number
         n = 0;
         int digit = 0;
-        for (int i = 0; i <= charArray.length-1; i++) {
-            digit = Integer.parseInt(charArray[i]+"");
+        for (int i = 0; i <= charArray.length - 1; i++) {
+            digit = Integer.parseInt(charArray[i] + "");
             n = n * 10;
             n += digit;
         }
         return n;
     }
-    
-    public static double centeredAverage(int[] array){
+
+    public static double centeredAverage(int[] array) {
         double average = 0;
         int max = array[0];
         int min = array[0];
         int sum = 0;
-        for(int i = 0; i < array.length; i++){
-            if(array[i]>max){
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > max) {
                 max = array[i];
             }
-            if(array[i] < min){
+            if (array[i] < min) {
                 min = array[i];
             }
             sum += array[i];
         }
-        average = (sum-max-min)/(double)(array.length-2);
+        average = (sum - max - min) / (double) (array.length - 2);
         return average;
     }
-    
-    public static int oneMissingNumber(int[] array){
+
+    public static int oneMissingNumber(int[] array) {
         Arrays.sort(array);
         int missing = 0;
-        for(int i = 0; i < array.length-1; i++){
-            if (array[i]+2==array[i+1]) {
-                missing = array[i]+1;
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] + 2 == array[i + 1]) {
+                missing = array[i] + 1;
             }
         }
         return missing;
     }
-    
-    public static int oneDuplicate(int[] array){
+
+    public static int oneDuplicate(int[] array) {
         Set set = new HashSet();
         int duplicate = 0;
-        for(int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             if (!set.add(array[i])) {
                 duplicate = array[i];
                 break;
@@ -759,14 +765,80 @@ public class Practicing20210214 {
         }
         return duplicate;
     }
-    
 
-   
+    public static int firstNonRepeatedNo(int[] array) {
+        //find the first non-repeated number in an array
+        Map<Integer, Integer> hashmap = new HashMap<>();
+        for (int item : array) {
+            if (hashmap.containsKey(item)) {
+                Integer countValue = hashmap.get(item);
+                hashmap.put(item, countValue + 1);
+            } else {
+                hashmap.put(item, 1);
+            }
+        }
+        System.out.println(hashmap);
+        for (int item : array) {
+            if (hashmap.get(item) == 1) {
+                return item;
+            }
+        }
+        return 0;
+    }
+
+    public static String durationFormat(int seconds) {
+        if (seconds < 0) {
+            throw new IllegalArgumentException("Argument cannot be less than zero.");
+        }
+        if (seconds == 0) {
+            return "now";
+        }
+        int[] metric = {60, 60, 24, 365};
+        //Put values into a stack
+        Stack<Integer> stack = new Stack<>();
+        int nonZeroItems = 0;
+        for (int i = 0; i < 4; i++) {
+            stack.push(seconds % metric[i]);
+            //Count non-zero values while inserting them
+            if (seconds % metric[i] != 0) {
+                nonZeroItems++;
+            }
+            seconds /= metric[i];
+        }
+        //Put No. of years into the stack too
+        if (seconds != 0) {
+            nonZeroItems++;
+        }
+        stack.push(seconds);
+        //Build a string for the output
+        String[] measures = {"year", "day", "hour", "minute", "second"};
+        StringBuilder stBuilder = new StringBuilder();
+        for (int i = 0; i < measures.length; i++) {
+            if (stack.peek() != 0) {
+                stBuilder.append(stack.peek());
+                stBuilder.append(" ");
+                stBuilder.append(measures[i]);
+                if (stack.peek() > 1) {
+                    stBuilder.append("s");
+                }
+                if (nonZeroItems > 2) {
+                    stBuilder.append(",");
+                }
+                if (nonZeroItems == 2) {
+                    stBuilder.append(" and");
+                }
+                stBuilder.append(" ");
+                nonZeroItems--;
+            }
+            stack.pop();
+        }
+        String formatted = stBuilder.toString();
+        formatted = formatted.trim();
+        return formatted;
+    }
+
     public static void main(String[] args) {
-        
-        int[] array = {2, 4, 6, 11, 3, 77, 88, 55, 54, 23, 5, 9, 11, 12};
-        System.out.println(oneDuplicate(array));
-        
+
     }
 
 }
